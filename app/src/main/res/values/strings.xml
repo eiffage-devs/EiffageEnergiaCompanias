@@ -15,11 +15,35 @@
     <string name="urlTareasTerminadas">https://inet.energia.eiffage.es:8002/api_iberdrola/getListaTareasTerminadasUsuarioIBE</string>
     <string name="urlListaAverias">https://inet.energia.eiffage.es:8002/api_iberdrola/getListaAveriasIBE/c/</string>
     <string name="urlUltimaVersion">https://inet.energia.eiffage.es:8002/api_iberdrola/obtenerUltimaVersion</string>
-    <string name="urlLineasPedido">https://inet.energia.eiffage.es:8002/api_iberdrola/urlLineasPedido</string>
+    <string name="urlLineasPedido">https://serviciontg.energia.eiffage.es/api/pages/PedIBE/ObtenerLineasPedido</string>
     <string name="urlEnviarDocumento">"https://inet.energia.eiffage.es:8002/api_iberdrola/creaIBE/doc_IB"</string>
     <string name="urlEnviarFoto">https://inet.energia.eiffage.es:8002/api_iberdrola/creaIBE/fotos_IB</string>
     <string name="urlFinalizarTarea">https://inet.energia.eiffage.es:8002/api_iberdrola/finTareaIBE/tarea</string>
     <string name="urlTraspasarTarea">https://inet.energia.eiffage.es:8002/api_iberdrola/AsignaTareaIBE/tarea/</string>
+    <string name="eliminar_tarea">Eliminar Tarea</string>
+    <string name="enviar_fotos">Enviar fotos</string>
+    <string name="finalizar_tarea">Finalizar tarea</string>
+    <string name="a_adir_fotos_desde_galer_a">Añadir fotos desde galería</string>
+    <string name="a_adir_foto_de_la_obra">Añadir foto de la obra</string>
+    <string name="fotograf_as">Fotografías:</string>
+    <string name="ver_l_neas_del_pedido">Ver líneas del pedido</string>
+    <string name="go">go</string>
+    <string name="albacete">Albacete</string>
+    <string name="localidad">Localidad</string>
+    <string name="fecha_fin_meco">Fecha fin MECO</string>
+    <string name="_28_05_2018">28/05/2018</string>
+    <string name="fecha">Fecha</string>
+    <string name="esta_es_una_descripci_n_de_ejemplo">Esta es una descripción de ejemplo</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="_7231134">7231134</string>
+    <string name="n_mero_de_pedido">Número de pedido</string>
+    <string name="datos_de_pedido">Datos de pedido</string>
+    <string name="tarea_creada_por">Tarea creada por:</string>
+    <string name="traspasar_tarea">Traspasar tarea</string>
+    <string name="ir_a_la_documentaci_n_del_pedido">Ir a la documentación del pedido</string>
+    <string name="bg">bg</string>
+    <string name="ver_fotos_hechas_para_este_pedido">Ver fotos hechas para este pedido</string>
+    <string name="cargando_fotos">Cargando fotos</string>
 
     <string-array name="categorias">
         <item>1. Centros de Transformación</item>

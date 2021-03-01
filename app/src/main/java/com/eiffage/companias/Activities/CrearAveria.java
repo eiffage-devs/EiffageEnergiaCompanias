@@ -3,12 +3,14 @@ package com.eiffage.companias.Activities;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -39,10 +41,22 @@ public class CrearAveria extends AppCompatActivity {
     String token, cod_recurso;
     ProgressDialog progressDialog;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_averia);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtPodac = findViewById(R.id.txtPodac);
         txtJefeObra = findViewById(R.id.txtJefeObra);
@@ -181,7 +195,7 @@ public class CrearAveria extends AppCompatActivity {
     }
 
     public void mostrarMensaje(String title, String message) {
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle(title)
                 .setMessage(message)

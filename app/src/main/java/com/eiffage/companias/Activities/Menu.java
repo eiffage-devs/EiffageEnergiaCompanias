@@ -7,15 +7,17 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -29,6 +31,7 @@ import com.eiffage.companias.DocumentacionGeneral;
 import com.eiffage.companias.DocumentacionGeneralV2;
 import com.eiffage.companias.Objetos.Usuario;
 import com.eiffage.companias.R;
+import com.google.android.material.card.MaterialCardView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +43,8 @@ public class Menu extends AppCompatActivity {
 
     private String URL_DATOS_USUARIO = "-";
     private String URL_ULTIMA_VERSION = "-";
+
+    private MaterialCardView cardDatosUsuario, cardMisTareas, cardMisPedidos, cardMisAverias;
 
     TextView txtusuario, txtempresa;
     Usuario miUsuario;
@@ -68,8 +73,10 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.custom_logo);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        findViews();
 
         URL_DATOS_USUARIO = getResources().getString(R.string.urlBase) + getResources().getString(R.string.urlCheck);
         URL_ULTIMA_VERSION = getResources().getString(R.string.urlUltimaVersion);
@@ -78,19 +85,53 @@ public class Menu extends AppCompatActivity {
         try{
             miUsuario = intent.getParcelableExtra("miUsuario");
 
-            txtusuario = findViewById(R.id.txtusuariomenu);
-            txtempresa = findViewById(R.id.txtempresamenu);
-
             txtusuario.setText(miUsuario.getEmail());
             txtempresa.setText(miUsuario.getEmpresa());
         }
         catch (NullPointerException e){
             e.printStackTrace();
-            txtusuario.setText("-");
-            txtempresa.setText("-");
         }
 
         comprobarDatos();
+    }
+
+    public void findViews(){
+        cardDatosUsuario = findViewById(R.id.cardDatosUsuario);
+        cardMisTareas = findViewById(R.id.cardMisTareas);
+        cardMisPedidos = findViewById(R.id.cardMisPedidos);
+        cardMisAverias = findViewById(R.id.cardMisAverias);
+
+        txtusuario = findViewById(R.id.txtusuariomenu);
+        txtempresa = findViewById(R.id.txtempresamenu);
+
+        setListeners();
+    }
+
+    public void setListeners(){
+        cardDatosUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datosUsuario(view);
+            }
+        });
+        cardMisTareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                misTareas(view);
+            }
+        });
+        cardMisPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                misPedidos(view);
+            }
+        });
+        cardMisAverias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                misAverias(view);
+            }
+        });
     }
 
     //----------Lógica de los botones de la activity----------\\
@@ -157,7 +198,8 @@ public class Menu extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
+                        catch (NullPointerException e){
+                        }
 
                     }
                 }, new Response.ErrorListener() {

@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activities.LineasPedido"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Detalle de la tarea"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/cabecera"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:background="#f00"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#007bff"
             android:gravity="center"
             android:padding="2dp"
             android:paddingBottom="10dp"
-            android:text="Código de producto"
+            android:text="Cod.\nproducto"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
 
@@ -33,14 +47,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.53"
-            android:background="#007bff"
             android:gravity="center"
             android:padding="2dp"
             android:paddingBottom="10dp"
-            android:text="Desc. de producto"
+            android:text="Desc. producto"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
 
@@ -48,14 +61,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.06"
-            android:background="#007bff"
             android:gravity="center"
             android:padding="2dp"
             android:paddingBottom="10dp"
-            android:text="Cantidad"
+            android:text="Cant."
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
 
@@ -63,14 +75,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.07"
-            android:background="#007bff"
             android:gravity="center"
             android:padding="2dp"
             android:paddingBottom="10dp"
-            android:text="Ud. medida"
+            android:text="Ud.\nmedida"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -81,4 +92,4 @@
         android:layout_below="@id/cabecera"
         android:dividerHeight="10dp" />
 
-</RelativeLayout>
+</LinearLayout>

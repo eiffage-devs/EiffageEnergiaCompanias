@@ -1,233 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="#343a40"
+    android:orientation="vertical"
     tools:context=".Activities.Menu">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:alpha="0.15"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bg1" />
 
-        <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:foregroundGravity="center"
+            app:srcCompat="@drawable/logo_blanco" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:onClick="datosUsuario"
+            android:gravity="top"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/usuario" />
-
-            <TextView
-                android:id="@+id/textView18"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDatosUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView8"
-                android:background="@android:color/background_light"
-                android:gravity="left"
-                android:padding="10dp"
-                android:text="Datos de usuario"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:layout_margin="20dp"
+                android:clickable="true"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView18"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Usuario:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtusuariomenu"
-                android:layout_width="258dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/textView18"
-                android:layout_toRightOf="@+id/textView19"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text="jsancho@energia.eiffage.es"
-                android:textColor="@android:color/black" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView19"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Empresa:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/usuario2" />
 
-            <TextView
-                android:id="@+id/txtempresamenu"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imageView8"
+                                android:layout_alignParentRight="true"
+                                android:gravity="left"
+                                android:padding="10dp"
+                                android:text="Datos de usuario"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/NegroBootstrap" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/textView18"
+                                        android:layout_marginLeft="5dp"
+                                        android:paddingLeft="10dp"
+                                        android:paddingTop="20dp"
+                                        android:paddingBottom="3dp"
+                                        android:text="Usuario:"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/txtusuariomenu"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/textView18"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_toRightOf="@+id/textView19"
+                                        android:maxLines="1"
+                                        android:paddingTop="3dp"
+                                        android:paddingBottom="3dp"
+                                        android:text="-"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView21"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:paddingLeft="10dp"
+                                        android:paddingTop="3dp"
+                                        android:paddingBottom="3dp"
+                                        android:text="Empresa:"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/txtempresamenu"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_toRightOf="@+id/textView21"
+                                        android:maxLines="1"
+                                        android:paddingTop="3dp"
+                                        android:paddingBottom="3dp"
+                                        android:text="-"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMisTareas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/textView19"
-                android:layout_toRightOf="@+id/textView21"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text="Eiffage Energía, S.L.U."
-                android:textColor="@android:color/black" />
-        </RelativeLayout>
+                android:layout_margin="20dp"
+                android:clickable="true"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:onClick="misTareas"
-            android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/mistareas" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/tareas" />
 
-            <TextView
-                android:id="@+id/textView25"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imageView8"
+                                android:layout_alignParentRight="true"
+                                android:gravity="left"
+                                android:padding="10dp"
+                                android:text="Mis tareas"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/NegroBootstrap" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textView18"
+                                android:layout_marginLeft="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="10dp"
+                                android:text="Informes fotográficos y resumen de pedidos"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMisPedidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView10"
-                android:background="@android:color/background_light"
-                android:gravity="left"
-                android:padding="10dp"
-                android:text="Mis tareas"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-            <TextView
-                android:id="@+id/textView26"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/pedidos" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imageView8"
+                                android:layout_alignParentRight="true"
+                                android:gravity="left"
+                                android:padding="10dp"
+                                android:text="Mis pedidos"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/NegroBootstrap" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textView18"
+                                android:layout_marginLeft="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="10dp"
+                                android:text="Documentación de pedidos asociados a tareas"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMisAverias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView25"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Informes fotográficos y resumen de pedidos"
-                android:textColor="@android:color/black" />
+                android:layout_margin="20dp"
+                android:clickable="true"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-        </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:onClick="misPedidos"
-            android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/mispedidos" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/averia" />
 
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView11"
-                android:background="@android:color/background_light"
-                android:gravity="left"
-                android:padding="10dp"
-                android:text="Mis pedidos"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
 
-            <TextView
-                android:id="@+id/textView28"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView27"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Documentación de pedidos asociados a tareas"
-                android:textColor="@android:color/black" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imageView8"
+                                android:layout_alignParentRight="true"
+                                android:gravity="left"
+                                android:padding="10dp"
+                                android:text="Mis averías"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-        </RelativeLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/NegroBootstrap" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:onClick="misAverias"
-            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textView18"
+                                android:layout_marginLeft="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="10dp"
+                                android:text="Creación de nuevas averías y gestión de averías activas"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp" />
 
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/misaverias" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView30"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView12"
-                android:background="@android:color/background_light"
-                android:gravity="left"
-                android:padding="10dp"
-                android:text="Mis averías"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+            </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/textView31"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView30"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Creación de nuevas averías y gestión de averías activas"
-                android:textColor="@android:color/black" />
-
-        </RelativeLayout>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
-</ScrollView>
+</RelativeLayout>

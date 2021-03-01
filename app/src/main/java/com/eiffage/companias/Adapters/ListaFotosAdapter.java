@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.eiffage.companias.Activities.FotoPantallaCompleta;
-import com.eiffage.companias.Activities.NuevaFoto;
+import com.eiffage.companias.Activities.ModificarDatosFoto.ModificarDatosFotoView;
 import com.eiffage.companias.Objetos.Foto;
 import com.eiffage.companias.R;
 
@@ -84,9 +84,9 @@ public class ListaFotosAdapter extends ArrayAdapter<Foto> {
             @Override
             public void onClick(View v) {
 
-                Log.d("PATH ADAPTER", values.get(position).getUrlFoto());
+                Log.d("PATH ADAPTER", String.valueOf(values.get(position).getUrlFoto()));
 
-                Intent intent = new Intent(context, NuevaFoto.class);
+                Intent intent = new Intent(context, ModificarDatosFotoView.class);
                 intent.putExtra("esNuevo", "NO");
                 intent.putExtra("foto", values.get(position).getUrlFoto());
                 intent.putExtra("categoria", categoria.getText().toString());

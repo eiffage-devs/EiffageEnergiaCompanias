@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -18,6 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +29,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.eiffage.companias.Objetos.Usuario;
 import com.eiffage.companias.R;
+import com.google.android.material.button.MaterialButton;
 
 
 import org.json.JSONException;
@@ -41,7 +43,7 @@ public class Login extends AppCompatActivity {
 
     EditText user, pass;
     SharedPreferences myPrefs;
-    Button login;
+    MaterialButton login;
     private boolean validado = false;
     static String urlLogin;
     static String urlCheck;
@@ -155,8 +157,12 @@ public class Login extends AppCompatActivity {
                             String nombre=job.getString("nombre");
                             String delegacion=job.getString("delegacion");
                             Log.d("DELEGACION", job.getString("delegacion"));
-
                             String cod_recurso=job.getString("cod_recurso");
+                            SharedPreferences.Editor editor = getSharedPreferences("myPrefs", MODE_PRIVATE).edit();
+                            editor.putString("empresa", empresa);
+                            editor.putString("recurso", cod_recurso);
+                            editor.apply();
+
                             nuevoUsuario[0] = new Usuario(token, email, empresa, nombre, delegacion, cod_recurso);
                             progressDialog.dismiss();
                             //Enviar a la siguiente pantalla
@@ -168,8 +174,6 @@ public class Login extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -204,7 +208,7 @@ public class Login extends AppCompatActivity {
         message.setText(s);
         message.setMovementMethod(LinkMovementMethod.getInstance());
 
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Login")
                 .setView(message)

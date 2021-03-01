@@ -3,8 +3,10 @@ package com.eiffage.companias.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -53,10 +55,22 @@ public class LineasPedido extends AppCompatActivity implements SearchView.OnQuer
     SharedPreferences myPrefs;
     LineaAdapter lineaAdapter;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lineas_pedido);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         URL_LINEAS_PEDIDO = getResources().getString(R.string.urlLineasPedido);
 
@@ -65,11 +79,11 @@ public class LineasPedido extends AppCompatActivity implements SearchView.OnQuer
         final String tokenGuardado = myPrefs.getString("token", "Sin valor");
 
         Intent i = getIntent();
-        String cod_pedido = i.getStringExtra("cod_pedido");
+        final String cod_pedido = i.getStringExtra("cod_pedido");
 
         //----------Petición a la API para recuperar las tareas activas del usuario----------\\
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest sr = new StringRequest(Request.Method.GET, URL_LINEAS_PEDIDO + cod_pedido,
+        StringRequest sr = new StringRequest(Request.Method.POST, URL_LINEAS_PEDIDO,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -109,10 +123,18 @@ public class LineasPedido extends AppCompatActivity implements SearchView.OnQuer
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("Content-Type", "application/json");
-                params.put("Authorization", "Bearer " + tokenGuardado);
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
 
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuarioApp", "eiffGest");
+                params.put("passwordApp", "U6ObJm9iwHWjYxL");
+                params.put("pedido", cod_pedido);
+                String empresa = getSharedPreferences("myPrefs", MODE_PRIVATE).getString("empresa", "-");
+                params.put("empresa", empresa);
                 return params;
             }
         };

@@ -2,6 +2,7 @@ package com.eiffage.companias.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +11,7 @@ import android.util.Log;
 
 import com.eiffage.companias.Objetos.Averia;
 import com.eiffage.companias.Objetos.Documento;
+import com.eiffage.companias.Objetos.Foto;
 
 import java.sql.SQLData;
 import java.util.ArrayList;
@@ -18,8 +20,7 @@ public class MySqliteOpenHelper  extends SQLiteOpenHelper {
 
     Context context;
     private static final String DATABASE_NAME = "Pedidos";
-    private static final int DATABASE_VERSION = 9;
-
+    private static final int DATABASE_VERSION = 10;
 
     private static final String CREAR_TABLA_PEDIDO = "CREATE TABLE Pedido (" +
             "codigo TEXT PRIMARY KEY," +
@@ -173,7 +174,6 @@ public class MySqliteOpenHelper  extends SQLiteOpenHelper {
         return actuales;
     }
 
-
     //----------Actualización del listado de tareas----------\\
 
     public void limpiarTablaPedidos(SQLiteDatabase db){
@@ -183,27 +183,14 @@ public class MySqliteOpenHelper  extends SQLiteOpenHelper {
 
     //----------Se guarda un informe con fotos----------\\
 
-    public void insertarFoto(SQLiteDatabase db, ContentValues c){
-        byte [] imagen = (byte[]) c.get("imagen");
-        String descripcion = c.getAsString("descripcion");
-        String categoria = c.getAsString("categoria");
-        String subcategoria = c.getAsString("subcategoria");
-        String fecha = c.getAsString("fecha");
-        String hora = c.getAsString("hora");
-        String coordenadasFotos = c.getAsString("coordenadasFotos");
-        String idTarea = c.getAsString("idTarea");
-        String urlFoto = c.getAsString("urlFoto");
-
-        db.execSQL("INSERT INTO Foto (imagen, descripcion, categoria, subcategoria, fecha, hora, coordenadasFotos, idTarea, urlFoto)" +
-                "VALUES ('" + Base64.encodeToString(imagen, Base64.DEFAULT) + "', '" + descripcion + "', '" + categoria + "', '" +
-                subcategoria + "', '" + fecha + "', '" + hora + "', '" + coordenadasFotos + "', '" + idTarea + "', '" + urlFoto + "')");
-
+    public int insertarFoto(SQLiteDatabase db, ContentValues c){
+        int id = (int) db.insert("Foto", "-", c);
+        return id;
     }
 
     //----------Se elimina la tarea porque se ha enviado con éxito, marcando la casilla de finalizar----------\\
 
     public void borrarTarea(SQLiteDatabase db, String idTarea){
-
         db.execSQL("DELETE FROM TAREA WHERE cod_tarea LIKE '" + idTarea + "'");
     }
 
@@ -222,4 +209,37 @@ public class MySqliteOpenHelper  extends SQLiteOpenHelper {
         db.execSQL("UPDATE Tarea SET algunaFotoEnviada = 'true' WHERE cod_tarea LIKE '" + idTarea + "'");
     }
 
+    public Foto getFoto(SQLiteDatabase db, String idFoto){
+        Cursor c = db.rawQuery("SELECT * FROM Foto WHERE id = " + Integer.parseInt(idFoto), null);
+        Foto foto = null;
+        if(c == null) Log.d("Problemas", "El cursor ha muerto");
+        else if(c.getCount() > 0){
+            Log.d("Sí hay longitudes", "El id está bien comprobado");
+            c.moveToFirst();
+            int id = c.getInt(0);
+            String descripcion = c.getString(2);
+            String categoria = c.getString(3);
+            String subcategoria = c.getString(4);
+            String fecha = c.getString(5);
+            String hora = c.getString(6);
+            String coordenadas = c.getString(7);
+            String idTarea = c.getString(8);
+            String urlFoto = c.getString(9);
+
+            foto = new Foto(id, categoria, subcategoria, fecha, hora, coordenadas, idTarea, descripcion, urlFoto);
+        }
+        else {
+            Log.d("No hay longitudes", "El id está mal comprobado");
+        }
+        c.close();
+        return foto;
+    }
+
+    public void actualizarValor(SQLiteDatabase db, String idFoto, String clave, String valor){
+        db.execSQL("UPDATE Foto SET " + clave + " = '" + valor + "' WHERE id = " + Integer.parseInt(idFoto));
+    }
+
+    public void borrarFoto(SQLiteDatabase db, String idFoto){
+        db.execSQL("DELETE FROM Foto WHERE id = " + Integer.parseInt(idFoto));
+    }
 }

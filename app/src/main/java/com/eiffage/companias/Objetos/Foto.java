@@ -2,6 +2,7 @@ package com.eiffage.companias.Objetos;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 
@@ -12,23 +13,16 @@ import java.io.ByteArrayOutputStream;
 
 public class Foto {
 
-    private Bitmap foto;
     private String descripcion;
     private String categoria, subcategoria;
     private String fecha, hora;
-
     private String coordenadasPedido;
     private String coordenadasFoto;
-
     private String urlFoto;
-
     String idTarea;
-
     private String id;
 
-
-    public Foto(Bitmap foto, String descripcion, String categoria, String subcategoria, String fecha, String hora, String coordenadasFoto, String idTarea, String id, String urlFoto){
-        this.foto = foto;
+    public Foto(String descripcion, String categoria, String subcategoria, String fecha, String hora, String coordenadasFoto, String idTarea, String urlFoto){
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
@@ -36,13 +30,21 @@ public class Foto {
         this.hora = hora;
         this.coordenadasFoto = coordenadasFoto;
         this.idTarea = idTarea;
-        this.id = id;
         this.urlFoto = urlFoto;
 
     }
 
-    public Bitmap getFoto() {
-        return foto;
+    public Foto(int id, String categoria, String subcategoria, String fecha, String hora, String coordenadasFoto, String idTarea, String descripcion, String urlFoto){
+        this.id = String.valueOf(id);
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.subcategoria = subcategoria;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.coordenadasFoto = coordenadasFoto;
+        this.idTarea = idTarea;
+        this.urlFoto = urlFoto;
+
     }
 
     public String getDescripcion() {
@@ -78,10 +80,6 @@ public class Foto {
     }
 
     public String getId() { return id;}
-
-    public void setFoto(Bitmap foto) {
-        this.foto = foto;
-    }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -124,7 +122,6 @@ public class Foto {
     @Override
     public String toString() {
         String s =
-                this.getFoto().toString() + "," +
                         this.getDescripcion() + "," +
                         this.getCategoria() + "," +
                         this.getSubcategoria() + "," +
@@ -141,7 +138,7 @@ public class Foto {
 
         JSONObject jsonObject= new JSONObject();
         try {
-            byte[] bytarray = Base64.decode(this.getUrlFoto(), Base64.DEFAULT);
+            byte[] bytarray = Base64.decode(String.valueOf(this.getUrlFoto()), Base64.DEFAULT);
             Bitmap imagen = BitmapFactory.decodeByteArray(bytarray, 0,
                     bytarray.length);
 

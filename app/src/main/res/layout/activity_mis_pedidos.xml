@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activities.MisPedidos">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Mis pedidos"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/listaPedidos"
@@ -16,4 +30,4 @@
         android:background="#343a40"
         android:dividerHeight="20dp" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +14,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -58,10 +60,22 @@ public class MisAverias extends AppCompatActivity {
     TextView ultimaActualizacion;
     String cod_recurso;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_averias);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         URL_ACTUALIZAR_AVERIAS = getResources().getString(R.string.urlListaAverias);
 
@@ -214,7 +228,7 @@ public class MisAverias extends AppCompatActivity {
     }
 
     public void mostrarMensaje(String title, String message) {
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle(title)
                 .setMessage(message)
@@ -278,7 +292,7 @@ public class MisAverias extends AppCompatActivity {
     //----------Mostrar mensaje mediante alert en la Activity----------\\
 
     public void mensajeAlert(String message){
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Mis averías")
                 .setMessage(message)

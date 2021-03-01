@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.ConnectivityManager;
@@ -16,9 +15,11 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -77,7 +78,6 @@ public class DocumentacionGeneralV2 extends AppCompatActivity {
 
     boolean infoCompleta = false;
 
-
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -101,7 +101,7 @@ public class DocumentacionGeneralV2 extends AppCompatActivity {
 
         //Actualización completa
         if (id == R.id.actCompleta) {
-            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
             alertdialogobuilder
                     .setTitle("Actualización completa")
                     .setMessage("Si algún documento te da problemas o se abre el que no toca, se puede hacer una actualización completa de listado de documentos para intentar solucionarlo. \n¿Deseas hacer la actualización completa?")
@@ -141,10 +141,22 @@ public class DocumentacionGeneralV2 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_documentacion_general_v2);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         URL_ACTUALIZAR_DOCUMENTOS = getResources().getString(R.string.urlActualizarDocumentos);
 
@@ -206,7 +218,7 @@ public class DocumentacionGeneralV2 extends AppCompatActivity {
     public void actualizacionCompletaDocumentos(View view){
         final View v = view;
         //Mostrar mensaje de advertencia
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Actualización completa")
                 .setMessage("Si actualizas con esta opción, se borrarán todos los documentos y volverán a descargarse. \nEsta opción se recomienda cuando hay ficheros duplicados o algún fichero no abre el documento que debería.\n¿Deseas hacer la actualización completa?")
@@ -517,7 +529,7 @@ public class DocumentacionGeneralV2 extends AppCompatActivity {
     }
 
     public void mensajeAlert(String message){
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Documentación general")
                 .setMessage(message)

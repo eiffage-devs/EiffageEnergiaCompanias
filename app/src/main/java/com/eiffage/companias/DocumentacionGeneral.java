@@ -14,9 +14,10 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,8 +35,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eiffage.companias.Activities.Documentacion;
-import com.eiffage.companias.Activities.PDFViewer;
 import com.eiffage.companias.DB.MySqliteOpenHelper;
 import com.eiffage.companias.Objetos.Documento;
 import com.eiffage.companias.Objetos.InputStreamVolleyRequest;
@@ -360,7 +359,7 @@ public class DocumentacionGeneral extends AppCompatActivity {
     //----------Mostrar mensaje mediante alert en la Activity----------\\
 
     public void mensajeAlert(String message){
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Documentación general")
                 .setMessage(message)

@@ -4,12 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.eiffage.companias.Adapters.MisPedidosAdapter;
 import com.eiffage.companias.DB.MySqliteOpenHelper;
@@ -28,12 +30,23 @@ public class MisPedidos extends AppCompatActivity {
     SQLiteDatabase db;
     Usuario miUsuario;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_pedidos);
-
-        getSupportActionBar().setTitle("Mis pedidos");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Pedidos");
 
         try{
             Intent i = getIntent();
@@ -60,7 +73,7 @@ public class MisPedidos extends AppCompatActivity {
             }while(c.moveToNext());
         }
         else {
-            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
             alertdialogobuilder
                     .setTitle("Sin tareas")
                     .setMessage("No tienes pedidos activos")

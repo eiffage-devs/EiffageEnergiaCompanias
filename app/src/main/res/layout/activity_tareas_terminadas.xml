@@ -6,11 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".Activities.TareasTerminadas">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Mis tareas terminadas"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
+
     <ListView
         android:id="@+id/listaTareasTerminadas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#343a40"
-        android:dividerHeight="20dp" />
+        android:dividerHeight="20dp"
+        android:layout_below="@id/toolbar"/>
 
 </RelativeLayout>

@@ -1,16 +1,20 @@
 package com.eiffage.companias.Activities;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +31,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.eiffage.companias.Activities.DetalleTarea.DetalleTareaView;
 import com.eiffage.companias.Adapters.MisTareasAdapter;
 import com.eiffage.companias.DB.MySqliteOpenHelper;
 import com.eiffage.companias.Objetos.Tarea;
@@ -63,11 +68,23 @@ public class MisTareas extends AppCompatActivity {
     TextView ultimaActualizacion;
     ProgressDialog progressDialog;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_tareas);
-        getSupportActionBar().setTitle("Mis tareas");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Mis tareas");
         mostrarUltimaActualizacion();
         misTareas = new ArrayList<>();
         pedido = "todo";
@@ -90,7 +107,7 @@ public class MisTareas extends AppCompatActivity {
         listaTareas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MisTareas.this, DetalleTarea.class);
+                Intent intent = new Intent(MisTareas.this, DetalleTareaView.class);
                 Tarea r = (Tarea) listaTareas.getItemAtPosition(position);
                 intent.putExtra("cod_pedido", r.getCod_pedido());
                 intent.putExtra("idTarea", r.getCod_tarea());
@@ -112,6 +129,37 @@ public class MisTareas extends AppCompatActivity {
         mostrarTareasLocales();
 
         ActivityCompat.requestPermissions(MisTareas.this, new String[]{android.Manifest.permission.CAMERA}, 1);
+
+        ActivityCompat.requestPermissions(MisTareas.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 1:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(MisTareas.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 2);
+                }
+                else {
+                    //ActivityCompat.requestPermissions(MisTareas.this, new String[]{android.Manifest.permission.CAMERA}, 1);
+                }
+                break;
+            case 2:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(MisTareas.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
+                }
+                else {
+                    ActivityCompat.requestPermissions(MisTareas.this, new String[]{android.Manifest.permission.CAMERA}, 2);
+                }
+                break;
+            case 3:
+                if(grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(MisTareas.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
+                }
+                break;
+        }
+
     }
 
     @Override
@@ -246,7 +294,7 @@ public class MisTareas extends AppCompatActivity {
                 return params;
             }
         };
-        sr.setRetryPolicy((new DefaultRetryPolicy(60 * 1000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)));
+        sr.setRetryPolicy((new DefaultRetryPolicy(20 * 1000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)));
         queue.add(sr);
 
 
@@ -255,7 +303,7 @@ public class MisTareas extends AppCompatActivity {
     //----------Mostrar mensaje mediante alert en la Activity----------\\
 
     public void mensajeAlert(String message){
-        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(this);
         alertdialogobuilder
                 .setTitle("Mis tareas")
                 .setMessage(message)

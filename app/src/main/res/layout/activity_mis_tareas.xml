@@ -4,9 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#343a40"
     android:orientation="vertical"
     tools:context=".Activities.MisTareas">
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.15"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bg1" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Mis tareas"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/ultimaActualizacion"
@@ -20,46 +41,48 @@
         android:paddingTop="5dp"
         android:text="Última actualización: NUNCA"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_below="@id/toolbar"/>
 
     <ListView
         android:id="@+id/listaDocsGeneral"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ultimaActualizacion"
-        android:layout_marginBottom="120dp"
-        android:divider="#343a40"
-        android:dividerHeight="20dp" />
+        android:layout_above="@id/btnActualizarDocs"
+        android:layout_marginBottom="20dp"
+        android:divider="@color/NegroBootstrap"
+        android:dividerHeight="1dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnActualizarDocs"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/listaDocsGeneral"
-        android:layout_marginTop="-110dp"
-        android:background="@color/AzulBootstrap"
         android:onClick="actualizarTareas"
         android:padding="5dp"
         android:text="Actualizar Tareas"
+        android:layout_above="@id/btnTareasTerminadas"
         android:textColor="@android:color/white"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cornerRadius="10dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTareasTerminadas"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/btnActualizarDocs"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/holo_orange_light"
         android:onClick="mostrarTareasTerminadas"
         android:padding="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Ver tareas terminadas"
         android:textColor="@android:color/white"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:cornerRadius="10dp"/>
 </RelativeLayout>

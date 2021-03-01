@@ -7,129 +7,101 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/listTitle1"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nº pedido:"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Desc. pedido:"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/listValue1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/listTitle1"
-        android:layout_marginTop="0dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/misTareasnumPedido"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="4503964794"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/misTareasDescPedido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="V.64061 CAMBIO SECCIONADORES OBSOLETOS V.64061 ST2"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/listTitle2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/listValue1"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Desc. tarea:"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:text="Tarea a realizar:"
+                android:textAlignment="textStart"
+                android:textColor="@color/NegroBootstrap"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/misTareasDescTarea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Hacer fotos de la obra. Recoger documentación."
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Pedido:"
+                android:textAlignment="textStart"
+                android:textColor="@color/NegroBootstrap"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/misTareasnumPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4503964794"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="3" />
 
             <TextView
-                android:id="@+id/txtHayFotos"
+                android:id="@+id/misTareasDescPedido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
+                android:text="V.64061 CAMBIO SECCIONADORES OBSOLETOS V.64061 ST2"
+                android:textAlignment="textStart"
+                android:textColor="@color/NegroBootstrap"
+                android:textSize="12sp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtHayFotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
-
-
 </RelativeLayout>

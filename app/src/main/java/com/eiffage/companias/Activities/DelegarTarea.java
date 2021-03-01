@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.eiffage.companias.DB.MySqliteOpenHelper;
+import com.eiffage.companias.Global.APIHelper;
+import com.eiffage.companias.Global.Global;
 import com.eiffage.companias.R;
 
 import org.json.JSONException;
@@ -33,7 +37,7 @@ import java.util.Map;
 
 public class DelegarTarea extends AppCompatActivity {
 
-    private String URL_TRASPASAR_TAREA = "-";
+    private APIHelper apiHelper;
 
     EditText campoBusqueda;
     Button buscar, delegar;
@@ -44,12 +48,24 @@ public class DelegarTarea extends AppCompatActivity {
 
     boolean isDelegable = false;
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delegar_tarea);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        URL_TRASPASAR_TAREA = getResources().getString(R.string.urlTraspasarTarea);
+        apiHelper = new APIHelper();
 
         campoBusqueda = findViewById(R.id.campoBusqueda);
         buscar = findViewById(R.id.btnbuscar);
@@ -163,7 +179,7 @@ public class DelegarTarea extends AppCompatActivity {
         Log.d("cod_pedido", cod_pedido);
         if(!nombre.getText().toString().equals("Nombre:")){
             RequestQueue queue = Volley.newRequestQueue(this);
-            StringRequest sr = new StringRequest(Request.Method.POST, URL_TRASPASAR_TAREA,
+            StringRequest sr = new StringRequest(Request.Method.POST, apiHelper.URL_TRASPASAR_TAREA,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -192,9 +208,6 @@ public class DelegarTarea extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<String, String>();
-                    //params.put("Content-Type", "application/json");
-                    params.put("Authorization", "Bearer " + token);
-
                     return params;
                 }
 
@@ -204,8 +217,11 @@ public class DelegarTarea extends AppCompatActivity {
                     Map<String, String> params = new HashMap<String, String>();
                     Log.d("Param idTarea", idTarea);
                     Log.d("Param cod_pedido", cod_pedido);
-                    params.put("usuario", cod_recurso);
-                    params.put("tarea", idTarea);
+                    params.put("usuarioApp", apiHelper.usuarioApp);
+                    params.put("passwordApp", apiHelper.passwordApp);
+                    params.put("empresa", new Global(DelegarTarea.this).myPrefs.getString("empresa", "-"));
+                    params.put("recurso", cod_recurso);
+                    params.put("numTarea", idTarea);
                     params.put("pedido", cod_pedido);
                     Log.d("Params traspaso", params.toString());
                     return params;

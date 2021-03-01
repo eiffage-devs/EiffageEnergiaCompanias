@@ -1,207 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/NegroBootstrap"
     tools:context="com.eiffage.companias.Activities.CerrarSesion">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:alpha="0.15"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bg1" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Datos de usuario"
+        app:titleTextColor="@android:color/white">
+    </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textView"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Versión de la app:  2.0"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/toolbar"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Versión de la app:  1.5.3"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@android:color/white"
-            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/usuario" />
+                android:maxHeight="150dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/usuario2" />
 
-            <TextView
-                android:id="@+id/textView18"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView8"
-                android:background="@android:color/background_light"
-                android:gravity="left"
-                android:padding="10dp"
-                android:text="Datos de usuario"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView18"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Usuario:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Datos de usuario"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtemail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/textView18"
-                android:layout_toRightOf="@+id/textView19"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text=""
-                android:textColor="@android:color/black" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Usuario:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView19"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Nombre:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/txtusuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtemail"
-                android:layout_toRightOf="@+id/textView20"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text=""
-                android:textColor="@android:color/black" />
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Nombre:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView20"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Empresa:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtusuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/txtempresa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtusuario"
-                android:layout_toRightOf="@+id/textView21"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text=""
-                android:textColor="@android:color/black" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Empresa:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView21"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Delegación:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtempresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/txtdelegacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtempresa"
-                android:layout_toRightOf="@+id/textView22"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text=""
-                android:textColor="@android:color/black" />
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Delegación:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView22"
-                android:background="@android:color/background_light"
-                android:paddingBottom="3dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:text="Código de recurso:"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtdelegacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/txtcod_usuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtdelegacion"
-                android:layout_toRightOf="@+id/textView23"
-                android:background="@android:color/white"
-                android:paddingBottom="3dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="3dp"
-                android:text=""
-                android:textColor="@android:color/black" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Código de recurso:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnCerrarSesion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtcod_usuario"
-                android:layout_margin="10dp"
-                android:background="@color/AzulBootstrap"
-                android:onClick="cerrarSesion"
-                android:text="Cerrar sesión"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/txtcod_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@android:color/black" />
 
-</ScrollView>
+                <Button
+                    android:id="@+id/btnCerrarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/AzulBootstrap"
+                    android:onClick="cerrarSesion"
+                    android:text="Cerrar sesión"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</RelativeLayout>

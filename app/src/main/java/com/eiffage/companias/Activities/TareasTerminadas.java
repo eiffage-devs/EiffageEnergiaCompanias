@@ -2,10 +2,12 @@ package com.eiffage.companias.Activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.eiffage.companias.Adapters.TareasTerminadasAdapter;
 import com.eiffage.companias.Objetos.Pedido;
@@ -41,8 +43,9 @@ public class TareasTerminadas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tareas_terminadas);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Tareas terminadas");
 
         listaTareasTerminadas = findViewById(R.id.listaTareasTerminadas);
 

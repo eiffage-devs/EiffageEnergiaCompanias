@@ -61,9 +61,12 @@ public class MisTareasAdapter extends ArrayAdapter<Tarea>{
         descPedido.setText(descripcionPedido);
         descTarea.setText(descripcionTarea);
         if(b){
+            hayFotos.setVisibility(View.VISIBLE);
             hayFotos.setTextColor(context.getResources().getColor(android.R.color.holo_orange_light));
             hayFotos.setText("FOTOS PENDIENTES DE ENVIAR");
         }
+        else
+            hayFotos.setVisibility(View.GONE);
         return rowView;
     }
 

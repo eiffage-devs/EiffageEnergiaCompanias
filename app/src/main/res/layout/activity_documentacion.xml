@@ -27,6 +27,18 @@
             android:background="@android:color/holo_red_light"
             android:visibility="gone" />-->
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/rojoEiffage"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:title="Documentación del pedido"
+            app:titleTextColor="@android:color/white"/>
+
         <LinearLayout
             android:id="@+id/documentos1"
             android:layout_width="match_parent"
@@ -288,7 +300,8 @@
             android:layout_below="@+id/enviarEditables"
             android:layout_marginTop="2dp"
             android:background="@color/NegroBootstrap"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/arrowFotos"

@@ -15,11 +15,12 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,12 +54,10 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -113,11 +111,23 @@ public class Documentacion extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    //
+    //      Método para usar flecha de atrás en Action Bar
+    //
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_documentacion);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         URL_ENVIAR_DOCUMENTO = getResources().getString(R.string.urlEnviarDocumento);
 
@@ -155,7 +165,7 @@ public class Documentacion extends AppCompatActivity {
         cod_pedido = getCod_pedido();
         token = getToken();
 
-        getSupportActionBar().setTitle("Doc. pedido " + cod_pedido);
+        setTitle("Doc. pedido " + cod_pedido);
 
         mySqliteOpenHelper = new MySqliteOpenHelper(Documentacion.this);
         db = mySqliteOpenHelper.getWritableDatabase();
@@ -883,7 +893,7 @@ public class Documentacion extends AppCompatActivity {
         rFotos = new ArrayList<>();
 
         if(mySqliteOpenHelper.hayEditables(db, cod_pedido)){
-            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(Documentacion.this, R.style.MyDialogTheme);
+            AlertDialog.Builder alertdialogobuilder = new AlertDialog.Builder(Documentacion.this);
             alertdialogobuilder
                     .setTitle("Atención")
                     .setMessage("Al descargar la documentación editable, perderás los cambios realizados.\n¿Deseas continuar?")

@@ -6,60 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".DocumentacionGeneralV2">
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.15"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bg1" />
 
-    <TextView
-        android:id="@+id/ultimaActualizacion"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
-        android:gravity="left"
-        android:paddingBottom="5dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp"
-        android:text="Última actualización: NUNCA"
-        android:textColor="#fff"
-        android:textSize="16sp" />
+        android:layout_alignParentTop="true"
+        android:background="@color/rojoEiffage"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Documentación General"
+        app:titleTextColor="@android:color/white" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardUltimaActualizacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        app:cardElevation="5dp">
+
+        <TextView
+            android:id="@+id/ultimaActualizacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="left"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Última actualización: NUNCA"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
 
     <ListView
         android:id="@+id/listaDocsGeneral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ultimaActualizacion"
+        android:layout_below="@id/cardUltimaActualizacion"
         android:layout_marginBottom="50dp"
         android:background="@android:color/white"
-        android:divider="#343a40"
-        android:dividerHeight="5dp" />
+        android:divider="@color/NegroBootstrap"
+        android:dividerHeight="1dp" />
 
     <Button
         android:id="@+id/btnActualizarDocs"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="false"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="-50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:background="@color/AzulBootstrap"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         android:onClick="actualizarDocumentos"
-        android:padding="5dp"
+        android:padding="15dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
         android:text="Actualización rápida"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnActualizarDocsCompleta"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:background="@color/RojoBootstrap"
-        android:onClick="actualizacionCompletaDocumentos"
-        android:padding="5dp"
-        android:text="Actualización completa"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
 </RelativeLayout>
