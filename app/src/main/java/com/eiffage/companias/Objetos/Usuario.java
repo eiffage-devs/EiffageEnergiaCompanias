@@ -1,4 +1,4 @@
-package com.eiffage.companias.Objetos;
+package com.eiffage.companias.companias.Adapters;
 
 import android.os.Parcel;
 import android.os.Parcelable;
