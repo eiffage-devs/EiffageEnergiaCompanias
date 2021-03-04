@@ -24,18 +24,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.FotosPedido.FotosPedidoView"></activity>
+        <activity android:name=".companias.Activities.FotosPedido.FotosPedidoView"></activity>
         <activity
             android:name=".DocumentacionGeneralV2"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.DetalleTarea.DetalleTareaView"
+            android:name=".companias.Activities.DetalleTarea.DetalleTareaView"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
             android:label="Informes"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.Login"
+            android:name=".companias.Activities.Login"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -45,24 +45,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.Menu"
+            android:name=".companias.Activities.Menu"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.CerrarSesion"
+            android:name=".companias.Activities.CerrarSesion"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.MisTareas"
+            android:name=".companias.Activities.MisTareas"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.MisPedidos"
+            android:name=".companias.Activities.MisPedidos"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.LineasPedido"
+            android:name=".companias.Activities.LineasPedido"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <meta-data
@@ -70,7 +70,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".Activities.Documentacion"
+            android:name=".companias.Activities.Documentacion"
             android:configChanges="screenLayout"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
@@ -85,43 +85,43 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <provider
-            android:name=".Objetos.MyProvider"
+            android:name=".companias.Objetos.MyProvider"
             android:authorities="com.eiffage.companias"
             android:exported="false"
             tools:ignore="InnerclassSeparator" />
 
         <activity
-            android:name=".Activities.FotoPantallaCompleta"
+            android:name=".companias.Activities.FotoPantallaCompleta"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.PDFViewer"
+            android:name=".companias.Activities.PDFViewer"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.MisAverias"
+            android:name=".companias.Activities.MisAverias"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.CrearAveria"
+            android:name=".companias.Activities.CrearAveria"
             android:label="Crear nueva avería"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.DelegarTarea"
+            android:name=".companias.Activities.DelegarTarea"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.TareasAverias"
+            android:name=".companias.Activities.TareasAverias"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DocumentacionGeneral"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.ModificarDatosFoto.ModificarDatosFotoView"
+            android:name=".companias.Activities.ModificarDatosFoto.ModificarDatosFotoView"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".Activities.TareasTerminadas"
+            android:name=".companias.Activities.TareasTerminadas"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator" />
     </application>

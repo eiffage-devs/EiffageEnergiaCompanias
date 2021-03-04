@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".Activities.FotoPantallaCompleta">
+    tools:context=".companias.Activities.FotoPantallaCompleta">
 
 
-    <com.eiffage.companias.Objetos.TouchImageView
+    <com.eiffage.companias.companias.Objetos.TouchImageView
         android:id="@+id/fotoPantallaCompleta"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
