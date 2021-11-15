@@ -44,6 +44,18 @@
         android:textSize="16sp"
         android:layout_below="@id/toolbar"/>
 
+    <TextView
+        android:id="@+id/notFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ultimaActualizacion"
+        android:layout_marginTop="20dp"
+        android:text="No se han encontrado tarea"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/listaDocsGeneral"
         android:layout_width="match_parent"
@@ -58,17 +70,17 @@
         android:id="@+id/btnActualizarDocs"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_above="@id/btnTareasTerminadas"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:onClick="actualizarTareas"
         android:padding="5dp"
         android:text="Actualizar Tareas"
-        android:layout_above="@id/btnTareasTerminadas"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textAllCaps="false"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:cornerRadius="10dp"/>
+        app:cornerRadius="10dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTareasTerminadas"

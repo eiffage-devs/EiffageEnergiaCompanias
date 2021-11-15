@@ -13,10 +13,14 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -64,9 +68,11 @@ public class MisTareas extends AppCompatActivity {
     SQLiteDatabase myDataBase;
     MySqliteOpenHelper mySqliteOpenHelper;
     String pedido;
+    TextView txtNoResult;
     Button actualizarTareas, tareasFinalizadas;
     TextView ultimaActualizacion;
     ProgressDialog progressDialog;
+    Menu menu_;
 
     //
     //      Método para usar flecha de atrás en Action Bar
@@ -95,6 +101,7 @@ public class MisTareas extends AppCompatActivity {
 
         Intent i = getIntent();
         miUsuario = i.getParcelableExtra("miUsuario");
+        txtNoResult = findViewById(R.id.notFound);
 
         //----------CREAR O ABRIR LA BASE DE DATOS----------\\
 
@@ -164,13 +171,40 @@ public class MisTareas extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
+
         mostrarTareasLocales();
         mostrarUltimaActualizacion();
+
+        try {
+
+            MenuItem searchHerram = menu_.findItem(R.id.searchTools);
+            SearchView sW = (SearchView) searchHerram.getActionView();
+            searchHerram.collapseActionView();
+            sW.setQuery("",false);
+            sW.clearFocus();
+
+        } catch (Exception e){}
         super.onRestart();
+    }
+
+    @Override
+    protected void onResume(){
+
+        /*try {
+
+            MenuItem searchHerram = menu_.findItem(R.id.searchTools);
+            SearchView sW = (SearchView) searchHerram.getActionView();
+            searchHerram.collapseActionView();
+            sW.setQuery("",false);
+            sW.clearFocus();
+
+        } catch (Exception e){}*/
+        super.onResume();
     }
 
     //---------------------Mostrar las tareas almacenadas localmente----------------------\\
     //----------(ESTE MÉTODO SE LLAMA AL ABRIR LA ACTIVITY Y AL ACTUALIZAR DATOS----------\\
+
 
     public void mostrarTareasLocales(){
 
@@ -514,5 +548,47 @@ public class MisTareas extends AppCompatActivity {
             }
         };
         queue.add(sr);
+    }
+    //Añadimos los items del menu a traves del inflate con el action_bar_menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        menu_=menu;
+        MenuItem searchTools = menu.findItem(R.id.searchTools);
+        SearchView searchView = (SearchView) searchTools.getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.buscarTarea)+"...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<Tarea> tareasFilter = new ArrayList<Tarea>();
+                for(Tarea tarea : misTareas){
+                    String descripcion = tarea.getDescripcion();
+                    if (descripcion.toLowerCase().contains(newText.toLowerCase())) {
+                        tareasFilter.add(tarea);
+                    }
+                }
+                if(!tareasFilter.isEmpty()){
+                    adapter = new MisTareasAdapter(getApplicationContext(), tareasFilter);
+                    listaTareas.setAdapter(adapter);
+                    listaTareas.setVisibility(View.VISIBLE);
+                    txtNoResult.setVisibility(View.GONE);
+                }else{
+                    listaTareas.setVisibility(View.GONE);
+                    txtNoResult.setVisibility(View.VISIBLE);
+
+                }
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

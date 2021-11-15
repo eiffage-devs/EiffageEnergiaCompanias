@@ -20,6 +20,11 @@
     <string name="urlEnviarFoto">https://inet.energia.eiffage.es:8002/api_iberdrola/creaIBE/fotos_IB</string>
     <string name="urlFinalizarTarea">https://inet.energia.eiffage.es:8002/api_iberdrola/finTareaIBE/tarea</string>
     <string name="urlTraspasarTarea">https://inet.energia.eiffage.es:8002/api_iberdrola/AsignaTareaIBE/tarea/</string>
+
+    <!-- Elemenos de menu del ActionBar -->
+    <string name="buscarTarea">Buscar Tarea</string>
+    <string name="buscarAveria">Buscar Averia</string>
+
     <string name="eliminar_tarea">Eliminar Tarea</string>
     <string name="enviar_fotos">Enviar fotos</string>
     <string name="finalizar_tarea">Finalizar tarea</string>

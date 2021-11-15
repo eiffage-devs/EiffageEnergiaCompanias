@@ -29,6 +29,11 @@ public class MisTareasAdapter extends ArrayAdapter<Tarea>{
         this.values = values;
     }
 
+    public void filter(ArrayList<Tarea> tareasFilter){
+        values = tareasFilter;
+        notifyDataSetChanged();
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
