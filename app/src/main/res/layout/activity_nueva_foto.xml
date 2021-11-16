@@ -89,8 +89,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:ems="10"
-            android:hint="Descripción"
+            android:hint="Solo letras, números y guión bajo"
             android:inputType="textPersonName"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm_-"
             android:textColor="@color/NegroBootstrap"
             android:textColorHint="@android:color/darker_gray" />
 
