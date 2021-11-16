@@ -189,16 +189,6 @@ public class MisTareas extends AppCompatActivity {
 
     @Override
     protected void onResume(){
-
-        /*try {
-
-            MenuItem searchHerram = menu_.findItem(R.id.searchTools);
-            SearchView sW = (SearchView) searchHerram.getActionView();
-            searchHerram.collapseActionView();
-            sW.setQuery("",false);
-            sW.clearFocus();
-
-        } catch (Exception e){}*/
         super.onResume();
     }
 
@@ -549,6 +539,7 @@ public class MisTareas extends AppCompatActivity {
         };
         queue.add(sr);
     }
+
     //Añadimos los items del menu a traves del inflate con el action_bar_menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

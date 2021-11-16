@@ -9,6 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
@@ -26,8 +30,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.eiffage.companias.companias.Adapters.MisAveriasAdapter;
+import com.eiffage.companias.companias.Adapters.MisTareasAdapter;
 import com.eiffage.companias.companias.DB.MySqliteOpenHelper;
 import com.eiffage.companias.companias.Objetos.Averia;
+import com.eiffage.companias.companias.Objetos.Tarea;
 import com.eiffage.companias.companias.Objetos.Usuario;
 import com.eiffage.companias.R;
 
@@ -55,9 +61,11 @@ public class MisAverias extends AppCompatActivity {
     SQLiteDatabase myDataBase;
     MySqliteOpenHelper mySqliteOpenHelper;
     Button actualizarAverias;
+    TextView txtNoResult;
     ProgressDialog progressDialog;
     TextView ultimaActualizacion;
     String cod_recurso;
+    Menu menu_;
 
     //
     //      Método para usar flecha de atrás en Action Bar
@@ -93,6 +101,7 @@ public class MisAverias extends AppCompatActivity {
         myDataBase = mySqliteOpenHelper.getWritableDatabase();
 
         listaAverias = findViewById(R.id.listaAverias);
+        txtNoResult = findViewById(R.id.notFoundAv);
 
         actualizarAverias();
         mostrarAveriasLocales();
@@ -223,6 +232,17 @@ public class MisAverias extends AppCompatActivity {
     @Override
     protected void onRestart() {
         actualizarAverias();
+
+        try {
+
+            MenuItem searchHerram = menu_.findItem(R.id.searchTools);
+            SearchView sW = (SearchView) searchHerram.getActionView();
+            searchHerram.collapseActionView();
+            sW.setQuery("",false);
+            sW.clearFocus();
+
+        } catch (Exception e){}
+
         super.onRestart();
     }
 
@@ -306,6 +326,50 @@ public class MisAverias extends AppCompatActivity {
         if (!MisAverias.this.isFinishing()){
             alertdialogobuilder.show();
         }
+    }
+    //Añadimos los items del menu a traves del inflate con el action_bar_menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        menu_=menu;
+
+        MenuItem searchTools = menu.findItem(R.id.searchTools);
+        searchTools.setTitle(R.string.buscarAveria);
+        SearchView searchView = (SearchView) searchTools.getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.buscarAveria)+"...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<Averia> averiasFilter = new ArrayList<Averia>();
+                for(Averia averia : misAverias){
+                    String descripcion = averia.getDescripcion();
+                    if (descripcion.toLowerCase().contains(newText.toLowerCase())) {
+                        averiasFilter.add(averia);
+                    }
+                }
+                if(!averiasFilter.isEmpty()){
+                    adapter = new MisAveriasAdapter(getApplicationContext(), averiasFilter);
+                    listaAverias.setAdapter(adapter);
+                    listaAverias.setVisibility(View.VISIBLE);
+                    txtNoResult.setVisibility(View.GONE);
+                }else{
+                    listaAverias.setVisibility(View.GONE);
+                    txtNoResult.setVisibility(View.VISIBLE);
+
+                }
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
 
