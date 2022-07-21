@@ -216,6 +216,7 @@ public class DetalleTareaModel {
                         else {
                             try {
                                 JSONObject j = new JSONObject(response);
+
                                 if (ultimaFoto) {
                                     {
                                         progressDialog.dismiss();

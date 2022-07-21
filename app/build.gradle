@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdk 30
     defaultConfig {
         applicationId 'com.eiffage.companias'
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 28
-        versionName "2.0"
+        targetSdk 30
+        versionCode 30
+        versionName '2.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {

@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-sw600dp/activity_cerrar_sesion.xml" value="0.187890625" />
+        <entry key="app/src/main/res/layout/activity_cerrar_sesion.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/activity_documentacion.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_documentacion_general.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_foto_pantalla_completa.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_fotos_pedido.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_mis_averias.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/activity_mis_tareas.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/activity_nueva_foto.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/layout/activity_tareas_averias.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/custom_list_item_photo.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/custom_logo.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/detalle_tarea.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_opciones_foto.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/action_bar_menu.xml" value="0.2520833333333333" />
